@@ -1,0 +1,4 @@
+ec2.env.local
+*.tmp
+.DS_Store
+site/

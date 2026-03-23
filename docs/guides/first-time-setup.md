@@ -9,12 +9,20 @@ Before starting, make sure the scripts in this repo are available:
 
 ## 1. Create the Volume
 
+Start by validating the config you plan to use:
+
+```bash
+./scripts/validate-config.sh --env-file ./ec2.env.local --mode create
+```
+
+Then create the volume.
+
 Create a volume in the same availability zone where you expect to launch your instances.
 
 Use:
 
 ```bash
-./scripts/create-volume.sh --env-file ./examples/ec2.env.example --name my-workspace
+./scripts/create-volume.sh --env-file ./ec2.env.local --name my-workspace
 ```
 
 The important output is the `VolumeId`.
@@ -27,7 +35,7 @@ Launch a temporary EC2 instance and attach the new volume:
 
 ```bash
 ./scripts/launch-and-attach.sh \
-  --env-file ./examples/ec2.env.example \
+  --env-file ./ec2.env.local \
   --volume-id vol-xxxxxxxxxxxxxxxxx
 ```
 
@@ -54,7 +62,16 @@ Still inside the instance:
 ```bash
 sudo ./scripts/mount-ebs.sh \
   --volume-id vol-xxxxxxxxxxxxxxxxx \
-  --mount-point /home/ubuntu/workspace
+  --env-file ./ec2.env.local
+```
+
+If your env file is not present inside the instance, pass the mount settings explicitly instead:
+
+```bash
+sudo ./scripts/mount-ebs.sh \
+  --volume-id vol-xxxxxxxxxxxxxxxxx \
+  --mount-point /home/ubuntu/workspace \
+  --workspace-dirs repos,data,outputs,transfer
 ```
 
 At this point the volume is ready for day-to-day use.

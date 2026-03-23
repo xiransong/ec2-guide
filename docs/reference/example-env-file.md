@@ -1,0 +1,28 @@
+# Example Env File
+
+The repository ships an example config file at `examples/ec2.env.example`.
+
+The contents look like this:
+
+```dotenv
+AWS_PROFILE=your-profile
+AWS_REGION=us-east-1
+AVAILABILITY_ZONE=us-east-1a
+AMI_ID=ami-xxxxxxxxxxxxxxxxx
+KEY_NAME=your-key-name
+SECURITY_GROUP_ID=sg-xxxxxxxxxxxxxxxxx
+INSTANCE_TYPE=t3.small
+ROOT_SIZE_GB=50
+VOLUME_SIZE_GB=200
+VOLUME_TYPE=gp3
+INSTANCE_NAME=work-instance
+VOLUME_NAME=persistent-workspace
+MOUNT_POINT=/home/ubuntu/workspace
+WORKSPACE_DIRS=repos,data,outputs,transfer
+```
+
+Copy it into a local, untracked file before editing:
+
+```bash
+cp examples/ec2.env.example ec2.env.local
+```

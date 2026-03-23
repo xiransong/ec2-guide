@@ -12,8 +12,10 @@ Keep this repo available:
 From your laptop:
 
 ```bash
+./scripts/validate-config.sh --env-file ./ec2.env.local --mode launch
+
 ./scripts/launch-and-attach.sh \
-  --env-file ./examples/ec2.env.example \
+  --env-file ./ec2.env.local \
   --volume-id vol-xxxxxxxxxxxxxxxxx
 ```
 
@@ -32,8 +34,10 @@ Inside the instance:
 ```bash
 sudo ./scripts/mount-ebs.sh \
   --volume-id vol-xxxxxxxxxxxxxxxxx \
-  --mount-point /home/ubuntu/workspace
+  --env-file ./ec2.env.local
 ```
+
+If you did not copy the env file into the instance, use explicit mount arguments instead.
 
 ## 4. Work Normally
 

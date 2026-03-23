@@ -6,7 +6,7 @@ The scripts in this repo accept explicit flags and can also load defaults from a
 
 See:
 
-- [ec2.env.example](/Users/songxiran/code/banglab-aws-guide/ec2-guide/examples/ec2.env.example)
+- [Example Env File](example-env-file.md)
 
 ## Common Variables
 
@@ -28,3 +28,15 @@ See:
 ## Recommendation
 
 Keep one small env file per workflow or account rather than editing scripts directly.
+
+A good pattern is:
+
+```bash
+cp examples/ec2.env.example ec2.env.local
+```
+
+Then point scripts at it with:
+
+```bash
+--env-file ./ec2.env.local
+```

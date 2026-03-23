@@ -1,0 +1,26 @@
+site_name: EC2 Guide
+site_description: Practical EC2 workflows with persistent EBS storage
+site_url: https://xiransong.github.io/ec2-guide/
+repo_url: https://github.com/xiransong/ec2-guide
+repo_name: xiransong/ec2-guide
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Disposable EC2, Persistent EBS: guides/disposable-ec2-persistent-ebs.md
+      - First-Time Setup: guides/first-time-setup.md
+      - Daily Workflow: guides/daily-workflow.md
+      - Storage and Safety: guides/storage-and-safety.md
+  - Reference:
+      - Configuration: reference/configuration.md
+      - Example Env File: reference/example-env-file.md
+      - Script Philosophy: reference/script-philosophy.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true

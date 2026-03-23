@@ -10,10 +10,19 @@ The main pattern is simple:
 
 ## Start Here
 
-1. Read [disposable-ec2-persistent-ebs.md](/Users/songxiran/code/banglab-aws-guide/ec2-guide/docs/guides/disposable-ec2-persistent-ebs.md)
-2. Follow [first-time-setup.md](/Users/songxiran/code/banglab-aws-guide/ec2-guide/docs/guides/first-time-setup.md)
-3. Reuse [daily-workflow.md](/Users/songxiran/code/banglab-aws-guide/ec2-guide/docs/guides/daily-workflow.md)
-4. Keep [storage-and-safety.md](/Users/songxiran/code/banglab-aws-guide/ec2-guide/docs/guides/storage-and-safety.md) nearby
+1. Read [Disposable EC2, Persistent EBS](guides/disposable-ec2-persistent-ebs.md)
+2. Follow [First-Time Setup](guides/first-time-setup.md)
+3. Reuse [Daily Workflow](guides/daily-workflow.md)
+4. Keep [Storage and Safety](guides/storage-and-safety.md) nearby
+
+## Fastest Path
+
+If you already understand the basic idea, the shortest useful path is:
+
+1. Copy `examples/ec2.env.example` to `ec2.env.local`
+2. Edit the values for your account
+3. Run `./scripts/validate-config.sh --env-file ./ec2.env.local --mode launch`
+4. Follow [First-Time Setup](guides/first-time-setup.md)
 
 ## Who This Is For
 

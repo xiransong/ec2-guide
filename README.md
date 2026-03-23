@@ -14,6 +14,42 @@ This repository pairs explanation with execution:
 - `scripts/` provides small shell helpers
 - `examples/` shows the minimum config you can adapt locally
 
+## Quickstart
+
+1. Copy the example config:
+
+```bash
+cp examples/ec2.env.example ec2.env.local
+```
+
+2. Edit `ec2.env.local` with your real values:
+
+- `AWS_PROFILE`
+- `AMI_ID`
+- `KEY_NAME`
+- `SECURITY_GROUP_ID`
+- your preferred instance and volume settings
+
+3. Validate the config before launching anything:
+
+```bash
+./scripts/validate-config.sh --env-file ./ec2.env.local --mode launch
+```
+
+4. Create a persistent volume:
+
+```bash
+./scripts/create-volume.sh --env-file ./ec2.env.local
+```
+
+5. Launch an instance and attach that volume:
+
+```bash
+./scripts/launch-and-attach.sh \
+  --env-file ./ec2.env.local \
+  --volume-id vol-xxxxxxxxxxxxxxxxx
+```
+
 ## Repository Shape
 
 ```text
@@ -48,6 +84,7 @@ ec2-guide/
 ## Where The Scripts Run
 
 - `create-volume.sh` and `launch-and-attach.sh` run on your local machine
+- `validate-config.sh` runs on your local machine
 - `format-volume.sh` and `mount-ebs.sh` run inside the EC2 instance, usually with `sudo`
 
 In practice, keep a copy of this repo available both locally and inside the instance, or copy the needed scripts over.
@@ -59,6 +96,26 @@ In practice, keep a copy of this repo available both locally and inside the inst
 - Parameterize account-specific details instead of hardcoding them
 - Prefer a few understandable scripts over a large framework
 
-## Status
+## Start Reading
 
-This is currently a drafted public repo inside the private workspace while the structure and messaging are being refined.
+- Guide index: [docs/index.md](docs/index.md)
+- First-time setup: [docs/guides/first-time-setup.md](docs/guides/first-time-setup.md)
+- Daily loop: [docs/guides/daily-workflow.md](docs/guides/daily-workflow.md)
+- Configuration reference: [docs/reference/configuration.md](docs/reference/configuration.md)
+
+## Docs Site
+
+This repo now includes an `mkdocs.yml` and a GitHub Pages workflow.
+
+For local preview:
+
+```bash
+python3 -m pip install -r requirements.txt
+mkdocs serve
+```
+
+For a production build:
+
+```bash
+mkdocs build --strict
+```
