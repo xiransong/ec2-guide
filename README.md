@@ -107,6 +107,8 @@ In practice, keep a copy of this repo available both locally and inside the inst
 
 This repo now includes an `mkdocs.yml` and a GitHub Pages workflow.
 
+The published site is intended to deploy from `main` via GitHub Actions.
+
 For local preview:
 
 ```bash
